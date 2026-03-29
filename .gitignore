@@ -1,0 +1,11 @@
+# Ignore all virtual environments
+.venv/
+venv/
+ENV/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables (API Keys)
+.env
