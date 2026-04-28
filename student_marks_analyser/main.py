@@ -28,30 +28,30 @@ def data_fillup():
         print(f"Successfully added: {name}")
 data_fillup()
 
+def get_student_data():
+     try:
+          with open("student.csv", 'r' ) as file:
+               return file.read()
+     except Exception as e:
+          return f"Error reading file: {str(e)}"
+     
+tool_list = [get_student_data]
+
 system_prompt = f"""
-You are an analytic system that summarises and gives output after reading the csv file from the location - student_marks_analyser.py/student.csv
-You read the file for the data. User would just use one prompt stating what he wants exactly and based on the data you give a desired output.
-You give the output in simple english and if neccessary, tables.
+You are an analytic system. You do not have the data initially. 
+If the user asks about students or marks, you MUST use the 'get_student_data' tool to see the file content.
+Give the output in simple English and use tables for performance summaries.
 """
 
 user_input = input("Your prompt: ")
 
 response = client.models.generate_content(
-    model="gemini-3-flash-preview",
+    model="gemini-3-flash-preview", 
     contents=user_input,
     config=types.GenerateContentConfig(
-        system_instruction=system_prompt
+        system_instruction=system_prompt,
+        tools=tool_list,
     )
 )
 
 print(response.text)
-
-# Create a Python program that allows a user to input student names along with their marks and then calculates useful statistics.
-
-# Your program should:
-# 1. Let the user input multiple students with their marks (name + integer score).
-# 2. After input is complete, display:
-#    - Average marks
-#    - Highest marks and student(s) who scored it
-#    - Lowest marks and student(s) who scored it
-#    - Total number of students
