@@ -45,27 +45,6 @@ def delete_data():
      except ValueError:
           print("Not a valid option")
 
-# def load_data():
-#      filename = []
-#      if (os.path.exists(filename)):
-#           with open(filename, 'w', encoding="utf-8") as file:
-#                for line in file:
-#                     text = line.strip().rsplit("||", 1)
-# load_data(filename)
-
-# def delete_data():
-#      load_data(filename)
-#      try:
-#           num = (int("Enter the no: "))
-#           if 1 <= num <= len(filename):
-#                remove = filename.pop(num-1)
-#                print(f"Data successfully deleted: {remove}")
-#           else:
-#                print("Invalid")
-#      except ValueError:
-#           print("Enter a valid number")
-# delete_data()
-
 def data_fillup():
         print("\n---Give the student data---\n")
         name = input("Name: ")
