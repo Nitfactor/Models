@@ -7,7 +7,7 @@ load_dotenv()
 
 client = genai.Client()
 
-def search_call():
+def search_call(query: str):
     url = "https://www.google.com/"
     response = requests.get(url)
 
